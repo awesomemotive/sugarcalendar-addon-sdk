@@ -1,0 +1,12 @@
+.DS_Store
+.htaccess
+phpcs.xml
+phpunit.xml
+npm-debug.log
+Thumbs.db
+wp-cli.local.yml
+build/
+node_modules/
+*.sql
+*.tar.gz
+*.zip

@@ -1,0 +1,11 @@
+{
+  "name": "sc-addon-skeleton",
+  "version": "1.0.0",
+  "main": "Gruntfile.js",
+  "author": "Sandhills Development",
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-wp-i18n": "^1.0.3",
+    "grunt-wp-readme-to-markdown": "~1.0.0"
+  }
+}
