@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  */
-namespace Change_Me;
+namespace SC_Addon_Skeleton;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
