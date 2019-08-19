@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: $name
- * Plugin URI:  $uri
- * Description: $description
+ * Plugin Name: Add On Skeleton
+ * Plugin URI:  https://
+ * Description: A template for add-ons
  * Author:      Sandhills Development, LLC
  * Author URI:  https://sandhillsdev.com
- * Version:     $version
- * Text Domain: $textdomain
- * Domain Path: $domainpath
+ * Version:     1.0.0
+ * Text Domain: sc-addon-skeleton
+ * Domain Path: /sc-addon-skeleton/includes/languages/
  */
 
 // Exit if accessed directly
@@ -20,8 +20,8 @@ defined( 'ABSPATH' ) || exit;
  * All you need to do is follow the steps below, then code away as usual.
  *
  * 0. Fill out plugin header info above
- * 1. Replace "Change_Me" with your unique PHP name space
- * 2. Replace "'change-me'" with your unique text domain
+ * 1. Replace "SC_Addon_Skeleton" with your unique PHP name space
+ * 2. Replace "'sc-addon-skeleton'" with your unique text domain
  * 3. Add to $requirements array if needed
  * 4.
  */
@@ -31,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  */
-final class Change_Me_Requirements_Check {
+final class SC_Addon_Skeleton_Requirements_Check {
 
 	/**
 	 * Plugin file
@@ -55,7 +55,7 @@ final class Change_Me_Requirements_Check {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $main_class = 'Change_Me\\Plugin';
+	private $main_class = 'SC_Addon_Skeleton\\Plugin';
 
 	/**
 	 * Requirements array
@@ -95,7 +95,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_url() {
-		return 'https://example.org';
+		return 'https://';
 	}
 
 	/**
@@ -105,7 +105,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_text() {
-		esc_html_e( 'This plugin is not fully active.', 'change-me' );
+		esc_html_e( 'This plugin is not fully active.', 'sc-addon-skeleton' );
 	}
 
 	/**
@@ -115,7 +115,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_description_text() {
-		return esc_html__( 'Requires %s (%s), but (%s) is installed.', 'change-me' );
+		return esc_html__( 'Requires %s (%s), but (%s) is installed.', 'sc-addon-skeleton' );
 	}
 
 	/**
@@ -125,7 +125,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_missing_text() {
-		return esc_html__( 'Requires %s (%s), but it appears to be missing.', 'change-me' );
+		return esc_html__( 'Requires %s (%s), but it appears to be missing.', 'sc-addon-skeleton' );
 	}
 
 	/**
@@ -135,7 +135,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_link() {
-		return esc_html__( 'Requirements', 'change-me' );
+		return esc_html__( 'Requirements', 'sc-addon-skeleton' );
 	}
 
 	/**
@@ -145,7 +145,7 @@ final class Change_Me_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_label() {
-		return esc_html__( 'Sugar Calendar Requirements', 'change-me' );
+		return esc_html__( 'Sugar Calendar Requirements', 'sc-addon-skeleton' );
 	}
 
 	/**
@@ -165,7 +165,7 @@ final class Change_Me_Requirements_Check {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'change-me' );
+		load_plugin_textdomain( 'sc-addon-skeleton' );
 	}
 
 	/** Load ******************************************************************/
@@ -481,4 +481,4 @@ final class Change_Me_Requirements_Check {
 }
 
 // Invoke the checker
-new Change_Me_Requirements_Check();
+new SC_Addon_Skeleton_Requirements_Check();

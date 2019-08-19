@@ -1,11 +1,46 @@
 {
-  "name": "sc-addon-skeleton",
-  "version": "1.0.0",
-  "main": "Gruntfile.js",
-  "author": "Sandhills Development",
-  "devDependencies": {
-    "grunt": "^1.0.4",
-    "grunt-wp-i18n": "^1.0.3",
-    "grunt-wp-readme-to-markdown": "~1.0.0"
-  }
+	"name": "sc-addon-skeleton",
+	"version": "1.0.0",
+	"main": "Gruntfile.js",
+	"author": "Sandhills Development",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"main": "webpack.config.js",
+	"engines": {
+		"node": ">=8.0.0",
+		"npm": ">=6.0.0"
+	},
+	"devDependencies": {
+		"@babel/core": "7.4.3",
+		"@wordpress/babel-preset-default": "4.1.0",
+		"@wordpress/browserslist-config": "2.3.0",
+		"@wordpress/eslint-plugin": "2.1.0",
+		"babel-loader": "8.0.5",
+		"copy-webpack-plugin": "5.0.2",
+		"cross-env": "5.2.0",
+		"eslint": "5.16.0",
+		"grunt": "^1.0.4",
+		"grunt-checktextdomain": "^1.0.1",
+		"grunt-contrib-clean": "^1.1.0",
+		"grunt-contrib-compress": "^1.4.3",
+		"grunt-contrib-copy": "^1.0.0",
+		"grunt-contrib-cssmin": "^2.2.1",
+		"grunt-force-task": "^2.0.0",
+		"grunt-rtlcss": "~2.0.1",
+		"grunt-wp-i18n": "^1.0.3",
+		"grunt-wp-readme-to-markdown": "~1.0.0",
+		"load-grunt-tasks": "^3.5.2",
+		"makepot": "^0.3.0",
+		"uglify-es": "3.3.9",
+		"uglifyjs-webpack-plugin": "2.1.2",
+		"webpack": "4.29.6",
+		"webpack-cli": "3.3.0"
+	},
+	"scripts": {
+		"build": "cross-env NODE_ENV=production webpack",
+		"dev": "cross-env NODE_ENV=default webpack --watch",
+		"lint": "./node_modules/.bin/eslint .; exit 0",
+		"lint:fix": "./node_modules/.bin/eslint . --fix; exit 0",
+		"package-plugin": "npm run build && grunt build"
+	}
 }
