@@ -23,9 +23,9 @@ module.exports = function( grunt ) {
 				files: [
 					{
 						expand: true,
-						cwd: 'sc-addon-skeleton/includes/admin/assets/css/ltr',
+						cwd: '<%= pkg.name %>/includes/admin/assets/css/ltr',
 						src: [ 'general.css' ],
-						dest: 'sc-addon-skeleton/includes/admin/assets/css/rtl',
+						dest: '<%= pkg.name %>/includes/admin/assets/css/rtl',
 						ext: '.css',
 					},
 				],
@@ -40,9 +40,9 @@ module.exports = function( grunt ) {
 				files: [
 					{
 						expand: true,
-						cwd: 'sc-addon-skeleton/includes/admin/assets/css/ltr',
+						cwd: '<%= pkg.name %>/includes/admin/assets/css/ltr',
 						src: [ 'general.css' ],
-						dest: 'sc-addon-skeleton/includes/admin/assets/css/min/ltr',
+						dest: '<%= pkg.name %>/includes/admin/assets/css/min/ltr',
 						ext: '.css',
 					},
 				],
@@ -51,9 +51,9 @@ module.exports = function( grunt ) {
 				files: [
 					{
 						expand: true,
-						cwd: 'sc-addon-skeleton/includes/admin/assets/css/rtl',
+						cwd: '<%= pkg.name %>/includes/admin/assets/css/rtl',
 						src: [ 'general.css' ],
-						dest: 'sc-addon-skeleton/includes/admin/assets/css/min/rtl',
+						dest: '<%= pkg.name %>/includes/admin/assets/css/min/rtl',
 						ext: '.css',
 					},
 				],
@@ -62,7 +62,7 @@ module.exports = function( grunt ) {
 
 		checktextdomain: {
 			options: {
-				text_domain: 'sc-addon-skeleton',
+				text_domain: '<%= pkg.name %>',
 				keywords: [
 					'__:1,2d',
 					'_e:1,2d',
@@ -100,7 +100,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'sc-addon-skeleton',
+				textdomain: '<%= pkg.name %>',
 			},
 			update_all_domains: {
 				options: {
@@ -129,10 +129,10 @@ module.exports = function( grunt ) {
 		makepot: {
 			target: {
 				options: {
-					domainPath: '/sc-addon-skeleton/includes/languages/', // Where to save the POT file.
+					domainPath: '/<%= pkg.name %>/includes/languages/', // Where to save the POT file.
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*', 'build/*' ],
-					mainFile: 'sc-addon-skeleton.php', // Main project file.
-					potFilename: 'sc-addon-skeleton.pot', // Name of the POT file.
+					mainFile: '<%= pkg.name %>.php', // Main project file.
+					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
 					potHeaders: {
 						poedit: true, // Includes common Poedit headers.
 						'x-poedit-keywordslist': true, // Include a list of all possible gettext functions.
@@ -170,18 +170,18 @@ module.exports = function( grunt ) {
 
 		// Clean up build directory
 		clean: {
-			main: [ 'build/sc-addon-skeleton' ],
+			main: [ 'build/<%= pkg.name %>' ],
 		},
 
 		// Copy the plugin into the build directory
 		copy: {
 			main: {
 				src: [
-					'sc-addon-skeleton/**',
+					'<%= pkg.name %>/**',
 					'*.php',
 					'*.txt',
 				],
-				dest: 'build/sc-addon-skeleton/',
+				dest: 'build/<%= pkg.name %>/',
 			},
 		},
 
@@ -193,7 +193,7 @@ module.exports = function( grunt ) {
 					archive: './build/<%= pkg.name %>.zip',
 				},
 				expand: true,
-				cwd: 'build/sc-addon-skeleton/',
+				cwd: 'build/<%= pkg.name %>/',
 				src: [ '**/*' ],
 				dest: '<%= pkg.name %>/',
 			},
