@@ -1,11 +1,10 @@
 {
 	"name": "sc-addon-skeleton",
 	"version": "1.0.0",
-	"main": "Gruntfile.js",
+	"main": "webpack.config.js",
 	"author": "Sandhills Development",
 	"private": true,
 	"license": "GPL-2.0-or-later",
-	"main": "webpack.config.js",
 	"engines": {
 		"node": ">=8.0.0",
 		"npm": ">=6.0.0"
