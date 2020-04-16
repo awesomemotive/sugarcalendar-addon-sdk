@@ -60,6 +60,8 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	/**
 	 * Requirements array
 	 *
+	 * The minimum version numbers denoted here will be adjusted as needed.
+	 *
 	 * @var array
 	 * @since 1.0.0
 	 */
@@ -77,9 +79,19 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 		// WordPress
 		'wp' => array(
-			'minimum' => '5.0.0',
+			'minimum' => '5.4.0',
 			'name'    => 'WordPress',
 			'exists'  => true,
+			'current' => false,
+			'checked' => false,
+			'met'     => false
+		),
+
+		// Sugar Calendar
+		'sc' => array(
+			'minimum' => '2.0.14',
+			'name'    => 'Sugar Calendar',
+			'exists'  => false,
 			'current' => false,
 			'checked' => false,
 			'met'     => false
@@ -426,6 +438,13 @@ final class SC_Addon_Skeleton_Requirements_Check {
 				// WP
 				case 'wp' :
 					$version = get_bloginfo( 'version' );
+					break;
+
+				// Sugar Calendar
+				case 'sc' :
+					$version = defined( 'SC_PLUGIN_VERSION' )
+						? SC_PLUGIN_VERSION
+						: false;
 					break;
 
 				/**
