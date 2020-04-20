@@ -78,9 +78,7 @@ final class Plugin {
 	}
 
 	/**
-	 * Main installer, fired as a WordPress installation hook.
-	 *
-	 * As a general rule, try to avoid using this if you can.
+	 * Main installer.
 	 *
 	 * @since 1.0.0
 	 */
@@ -89,13 +87,33 @@ final class Plugin {
 	}
 
 	/**
-	 * Main uninstaller, fired as a WordPress uninstall hook.
+	 * Main uninstaller.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function uninstall() {
+
+	}
+
+	/**
+	 * Main activator, fired as a WordPress activation hook.
 	 *
 	 * As a general rule, try to avoid using this if you can.
 	 *
 	 * @since 1.0.0
 	 */
-	public static function uninstall() {
+	public static function activate() {
+
+	}
+
+	/**
+	 * Main deactivator, fired as a WordPress deactivation hook.
+	 *
+	 * As a general rule, try to avoid using this if you can.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function deactivate() {
 
 	}
 
@@ -109,7 +127,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __NAMESPACE__, '2.0' );
+		_doing_it_wrong( __FUNCTION__, __NAMESPACE__, '1.0.0' );
 	}
 
 	/**
@@ -119,7 +137,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __NAMESPACE__, '2.0' );
+		_doing_it_wrong( __FUNCTION__, __NAMESPACE__, '1.0.0' );
 	}
 
 	/**
@@ -356,7 +374,7 @@ final class Plugin {
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $cm = change_me(); ?>
+ * Example: <?php $cm = \SC_Addon_Skeleton\change_me(); ?>
  *
  * @since 1.0.0
  * @return object|Plugin

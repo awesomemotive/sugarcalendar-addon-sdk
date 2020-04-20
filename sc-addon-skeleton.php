@@ -236,38 +236,38 @@ final class SC_Addon_Skeleton_Requirements_Check {
 		add_action( 'plugins_loaded', array( $this, 'bootstrap' ) );
 
 		// Register the activation hook
-		register_activation_hook( $this->file, array( $this, 'install' ) );
+		register_activation_hook( $this->file, array( $this, 'activate' ) );
 
 		// Register the deactivation hook
-		register_deactivation_hook( $this->file, array( $this, 'uninstall' ) );
+		register_deactivation_hook( $this->file, array( $this, 'deactivate' ) );
 	}
 
 	/**
-	 * Install, usually on an activation hook.
+	 * Activate, usually on an activation hook.
 	 *
 	 * @since 1.0.0
 	 */
-	public function install() {
+	public function activate() {
 
 		// Bootstrap to include all of the necessary files
 		$this->bootstrap();
 
 		// Installer
-		$this->main_class::install();
+		call_user_func( array( $this->main_class, 'activate' ) );
 	}
 
 	/**
-	 * Uninstall, usually on a deactivation hook.
+	 * Deactivate, usually on a deactivation hook.
 	 *
 	 * @since 1.0.0
 	 */
-	public function uninstall() {
+	public function deactivate() {
 
 		// Bootstrap to include all of the necessary files
 		$this->bootstrap();
 
 		// Uninstaller
-		$this->main_class::uninstall();
+		call_user_func( array( $this->main_class, 'deactivate' ) );
 	}
 
 	/**
