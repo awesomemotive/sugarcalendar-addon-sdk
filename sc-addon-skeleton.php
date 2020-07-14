@@ -1,13 +1,15 @@
 <?php
 /**
- * Plugin Name: Add On Skeleton
- * Plugin URI:  https://
- * Description: A template for add-ons
- * Author:      Sandhills Development, LLC
- * Author URI:  https://sandhillsdev.com
- * Version:     1.0.0
- * Text Domain: sc-addon-skeleton
- * Domain Path: /sc-addon-skeleton/includes/languages/
+ * Plugin Name:       Add On Skeleton
+ * Plugin URI:        https://
+ * Description:       A template for add-ons
+ * Author:            Sandhills Development, LLC
+ * Author URI:        https://sandhillsdev.com
+ * Version:           1.0.0
+ * Text Domain:       sc-addon-skeleton
+ * Domain Path:       /sc-addon-skeleton/includes/languages/
+ * Requires PHP:      7.0.0
+ * Requires at least: 5.3
  */
 
 // Exit if accessed directly
@@ -69,7 +71,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 		// PHP
 		'php' => array(
-			'minimum' => '5.6.0',
+			'minimum' => '7.0.0',
 			'name'    => 'PHP',
 			'exists'  => true,
 			'current' => false,
@@ -79,7 +81,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 		// WordPress
 		'wp' => array(
-			'minimum' => '5.4.0',
+			'minimum' => '5.3.0',
 			'name'    => 'WordPress',
 			'exists'  => true,
 			'current' => false,
@@ -433,11 +435,13 @@ final class SC_Addon_Skeleton_Requirements_Check {
 				// PHP
 				case 'php' :
 					$version = phpversion();
+					$met     = is_php_version_compatible( $properties['minimum'] );
 					break;
 
 				// WP
 				case 'wp' :
 					$version = get_bloginfo( 'version' );
+					$met     = is_wp_version_compatible( $properties['minimum'] );
 					break;
 
 				// Sugar Calendar
@@ -445,6 +449,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 					$version = defined( 'SC_PLUGIN_VERSION' )
 						? SC_PLUGIN_VERSION
 						: false;
+					$met     = version_compare( $version, $properties['minimum'], '>=' );
 					break;
 
 				/**
@@ -456,15 +461,16 @@ final class SC_Addon_Skeleton_Requirements_Check {
 				// Unknown
 				default :
 					$version = false;
+					$met     = false;
 					break;
 			}
 
 			// Merge to original array
 			if ( ! empty( $version ) ) {
 				$this->requirements[ $dependency ] = array_merge( $this->requirements[ $dependency ], array(
-					'current' => $version,
 					'checked' => true,
-					'met'     => version_compare( $version, $properties['minimum'], '>=' )
+					'current' => $version,
+					'met'     => $met
 				) );
 			}
 		}

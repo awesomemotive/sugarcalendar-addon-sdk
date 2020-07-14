@@ -1,12 +1,15 @@
 === SC Add On Skeleton ===
-Contributors:      (comma separated list of wordpress.org user names)
-Donate link:       https://example.org/
-Tags:              change, me
-Requires at least: 5.0
-Tested up to:      5.3
-Stable tag:        1.0.0
-License:           GPLv2 or later
+Donate link:       https://
+Author URI:        https://
+Plugin URI:        https://
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+License:           GPLv2 or later
+Contributors:      (comma separated list of wordpress.org user names)
+Tags:              (comma separated list of relevant keywords)
+Requires PHP:      7.0
+Requires at least: 5.3
+Tested up to:      5.5
+Stable tag:        1.0.0
 
 Here is a short description of the plugin. This should be no more than 150 characters. No markup here.
 
@@ -36,9 +39,11 @@ Answer to foo bar dilemma.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.1.0 =
 * A change since the previous version.
-* Another change.
+
+= 1.0.0 =
+* Initial release.
 
 == Upgrade Notice ==
 
