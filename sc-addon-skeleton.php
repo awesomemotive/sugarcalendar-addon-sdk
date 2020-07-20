@@ -5,11 +5,11 @@
  * Description:       A template for add-ons
  * Author:            Sandhills Development, LLC
  * Author URI:        https://sandhillsdev.com
- * Version:           1.0.0
  * Text Domain:       sc-addon-skeleton
  * Domain Path:       /sc-addon-skeleton/includes/languages/
  * Requires PHP:      7.0.0
  * Requires at least: 5.3
+ * Version:           1.0.1
  */
 
 // Exit if accessed directly
@@ -91,7 +91,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 		// Sugar Calendar
 		'sc' => array(
-			'minimum' => '2.0.14',
+			'minimum' => '2.0.17',
 			'name'    => 'Sugar Calendar',
 			'exists'  => false,
 			'current' => false,

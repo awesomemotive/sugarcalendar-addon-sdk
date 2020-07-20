@@ -38,7 +38,7 @@ final class Plugin {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $version = '1.0.0';
+	private $version = '1.0.1';
 
 	/**
 	 * Prefix.
@@ -46,7 +46,7 @@ final class Plugin {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $prefix = 'cm'; // change_me
+	private $prefix = 'scas'; // change_me
 
 	/**
 	 * Main instance.

@@ -9,7 +9,7 @@ Tags:              (comma separated list of relevant keywords)
 Requires PHP:      7.0
 Requires at least: 5.3
 Tested up to:      5.5
-Stable tag:        1.0.0
+Stable tag:        1.0.1
 
 Here is a short description of the plugin. This should be no more than 150 characters. No markup here.
 
@@ -39,7 +39,7 @@ Answer to foo bar dilemma.
 
 == Changelog ==
 
-= 1.1.0 =
+= 1.0.1 =
 * A change since the previous version.
 
 = 1.0.0 =

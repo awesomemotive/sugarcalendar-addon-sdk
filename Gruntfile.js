@@ -60,6 +60,49 @@ module.exports = function( grunt ) {
 			},
 		},
 
+		replace: {
+
+			// /README.md
+			readme_md: {
+				src: [ 'README.md' ],
+				overwrite: true,
+				replacements: [{
+					from: /Current Version:\s*(.*)/,
+					to: "Current Version: <%= pkg.version %>",
+				}],
+			},
+
+			// /readme.txt
+			readme_txt: {
+				src: [ 'readme.txt' ],
+				overwrite: true,
+				replacements: [{
+					from: /Stable tag:\s*(.*)/,
+					to: "Stable tag:        <%= pkg.version %>",
+				}],
+			},
+
+			// /sugar-calendar.php
+			bootstrap_php: {
+				src: [ '<%= pkg.name %>.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /Version:\s*(.*)/,
+					to: "Version:           <%= pkg.version %>",
+				}],
+			},
+
+			// /sugar-calendar/sugar-calendar.php
+			loader_php: {
+				src: [ '<%= pkg.name %>/<%= pkg.name %>.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /private\s*\$version\s*=\s*'(.*)'/,
+					to: "private $version = '<%= pkg.version %>'",
+				}],
+			},
+		},
+
 		checktextdomain: {
 			options: {
 				text_domain: '<%= pkg.name %>',
@@ -221,23 +264,24 @@ module.exports = function( grunt ) {
 		'wp_readme_to_markdown'
 	] );
 
+	// Bump versions
+	grunt.registerTask( 'bump', [
+		'replace'
+	] );
+
 	// Bump assets
 	grunt.registerTask( 'update', [
+		'bump',
 		'cssmin:ltr',
 		'rtlcss',
 		'cssmin:rtl',
 		'force:checktextdomain',
-		'makepot',
-		'compress'
+		'makepot'
 	] );
 
 	// Build the .zip to ship somewhere
 	grunt.registerTask( 'build', [
-		'cssmin:ltr',
-		'rtlcss',
-		'cssmin:rtl',
-		'force:checktextdomain',
-		'makepot',
+		'update',
 		'clean',
 		'copy',
 		'compress'
