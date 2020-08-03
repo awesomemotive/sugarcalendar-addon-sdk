@@ -206,6 +206,18 @@ final class SC_Addon_Skeleton_Requirements_Check {
 		load_plugin_textdomain( 'sc-addon-skeleton' );
 	}
 
+	/**
+	 * Check if requirements are met, then load plugin or quit.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	public function load_plugin() {
+		$this->met()
+			? $this->load()
+			: $this->quit();
+	}
+
 	/** Load ******************************************************************/
 
 	/**
@@ -222,10 +234,8 @@ final class SC_Addon_Skeleton_Requirements_Check {
 		// Always load translations
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
-		// Load or quit
-		$this->met()
-			? $this->load()
-			: $this->quit();
+		// Always (try to) load the plugin
+		add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 	}
 
 	/**
@@ -302,7 +312,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @since 1.0.0
 	 */
 	public function bootstrap() {
-		$this->main_class::instance( $this->file );
+		call_user_func( array( $this->main_class, 'instance' ), $this->file );
 	}
 
 	/** Multisite *************************************************************/
