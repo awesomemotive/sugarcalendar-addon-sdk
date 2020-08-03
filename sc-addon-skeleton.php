@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Add On Skeleton
+ * Plugin Name:       Sugar Calendar - Add On Skeleton
  * Plugin URI:        https://
  * Description:       A template for add-ons
  * Author:            Sandhills Development, LLC
@@ -9,7 +9,7 @@
  * Domain Path:       /sc-addon-skeleton/includes/languages/
  * Requires PHP:      7.0.0
  * Requires at least: 5.3
- * Version:           1.0.1
+ * Version:           1.0.0
  */
 
 // Exit if accessed directly
@@ -27,6 +27,12 @@ defined( 'ABSPATH' ) || exit;
  * 3. Add to $requirements array if needed
  * 4.
  */
+
+/**
+ * This class_exists() check avoids fatal errors when this plugin is activated
+ * in more than one way, and should not be removed.
+ */
+if ( ! class_exists( 'SC_Addon_Skeleton_Requirements_Check' ) ) :
 
 /**
  * The main plugin requirements checker
@@ -58,6 +64,14 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @var string
 	 */
 	private $main_class = 'SC_Addon_Skeleton\\Plugin';
+
+	/**
+	 * Public URI linking users to learn more about plugin requirements
+	 *
+	 * @since 1.0.0
+	 * @var string
+	 */
+	private $url = 'https://docs.sugarcalendar.com/category/2162-add-ons';
 
 	/**
 	 * Requirements array
@@ -100,7 +114,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 		)
 	);
 
-	/** Strings ***************************************************************/
+	/** Links & Styles ********************************************************/
 
 	/**
 	 * Plugin specific URL for an external requirements page.
@@ -109,8 +123,28 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_url() {
-		return 'https://';
+		return $this->url;
 	}
+
+	/**
+	 * Plugin specific string used in CSS to identify attribute IDs and classes.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
+	private function unmet_requirements_name() {
+
+		// Underscores are not valid
+		$hyphens = str_replace( '_', '-', __CLASS__ );
+
+		// Lowercase is the standard
+		$retval  = strtolower( $hyphens );
+
+		// Return class name
+		return $retval;
+	}
+
+	/** Strings ***************************************************************/
 
 	/**
 	 * Plugin specific text to quickly explain what's wrong.
@@ -160,16 +194,6 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 */
 	private function unmet_requirements_label() {
 		return esc_html__( 'Sugar Calendar Requirements', 'sc-addon-skeleton' );
-	}
-
-	/**
-	 * Plugin specific text used in CSS to identify attribute IDs and classes.
-	 *
-	 * @since 1.0.0
-	 * @return string
-	 */
-	private function unmet_requirements_name() {
-		return 'sc-requirements';
 	}
 
 	/**
@@ -234,8 +258,8 @@ final class SC_Addon_Skeleton_Requirements_Check {
 			return;
 		}
 
-		// Bootstrap to plugins_loaded
-		add_action( 'plugins_loaded', array( $this, 'bootstrap' ) );
+		// Bootstrap to plugins_loaded (priority 40, so dependencies are loaded)
+		add_action( 'plugins_loaded', array( $this, 'bootstrap' ), 40 );
 
 		// Register the activation hook
 		register_activation_hook( $this->file, array( $this, 'activate' ) );
@@ -295,6 +319,76 @@ final class SC_Addon_Skeleton_Requirements_Check {
 			: false;
 	}
 
+	/** Helpers ***************************************************************/
+
+	/**
+	 * Helper method to re-determine if WordPress 5.5 is showing the auto-update
+	 * column in the Plugins list table.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return boolean
+	 */
+	private function showing_auto_updates() {
+
+		// Bail if auto updates do not exist
+		if ( ! function_exists( 'wp_is_auto_update_enabled_for_type' ) ) {
+			return false;
+		}
+
+		// Bail if not enabled
+		if ( ! wp_is_auto_update_enabled_for_type( 'plugin' ) ) {
+			return false;
+		}
+
+		// Bail if current user cannot update plugins
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			return false;
+		}
+
+		// Bail if in network admin
+		if ( is_multisite() && ! is_blog_admin() ) {
+			return false;
+		}
+
+		// Allowed auto-update statuses
+		$allowed_statuses = array(
+			'all',
+			'active',
+			'inactive',
+			'recently_activated',
+			'upgrade',
+			'search',
+			'paused',
+			'auto-update-enabled',
+			'auto-update-disabled'
+		);
+
+		// Status
+		$status = ! empty( $_REQUEST['plugin_status'] )
+			? sanitize_key( $_REQUEST['plugin_status'] )
+			: 'all';
+
+		// Is status allowed?
+		$allowed = in_array( $status, $allowed_statuses, true );
+
+		// Return if allowed
+		return $allowed;
+	}
+
+	/**
+	 * How many columns should the description column span?
+	 *
+	 * For plugin_row_notice()
+	 *
+	 * @since 1.0.0
+	 */
+	private function description_colspan() {
+		return $this->showing_auto_updates()
+			? 2
+			: 1;
+	}
+
 	/** Agnostic Methods ******************************************************/
 
 	/**
@@ -310,7 +404,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 		<td class="column-primary">
 			<?php $this->unmet_requirements_text(); ?>
 		</td>
-		<td class="column-description">
+		<td class="column-description" colspan="<?php echo absint( $this->description_colspan() ); ?>">
 			<?php $this->unmet_requirements_description(); ?>
 		</td>
 		</tr><?php
@@ -346,7 +440,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 				'<strong>' . esc_html( $requirement['current'] ) . '</strong>'
 			);
 
-			// Requirement could not be found
+		// Requirement could not be found
 		} else {
 			$text = sprintf(
 				$this->unmet_requirements_missing_text(),
@@ -507,3 +601,5 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 // Invoke the checker
 new SC_Addon_Skeleton_Requirements_Check();
+
+endif;
