@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  */
-namespace SC_Addon_Skeleton;
+namespace SC_Addon_SDK;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
@@ -364,21 +364,4 @@ final class Plugin {
 			require_once $file;
 		}
 	}
-}
-
-/**
- * Returns the plugin instance.
- *
- * The main function responsible for returning the one true plugin instance.
- *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
- *
- * Example: <?php $cm = \SC_Addon_Skeleton\change_me(); ?>
- *
- * @since 1.0.0
- * @return object|Plugin
- */
-function change_me() {
-	return Plugin::instance();
 }

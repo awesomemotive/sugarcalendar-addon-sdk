@@ -1,5 +1,5 @@
 {
-	"name": "sc-addon-skeleton",
+	"name": "sc-addon-sdk",
 	"version": "1.0.1",
 	"main": "webpack.config.js",
 	"author": "Sandhills Development",

@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name:       Sugar Calendar - Add On Skeleton
+ * Plugin Name:       Sugar Calendar - Add-On SDK
  * Plugin URI:        https://
- * Description:       A template for add-ons
+ * Description:       A Software Development Kit for Sugar Calendar Add-ons
  * Author:            Sandhills Development, LLC
  * Author URI:        https://sandhillsdev.com
- * Text Domain:       sc-addon-skeleton
- * Domain Path:       /sc-addon-skeleton/includes/languages/
+ * Text Domain:       sc-addon-sdk
+ * Domain Path:       /sc-addon-sdk/includes/languages/
  * Requires PHP:      7.0.0
  * Requires at least: 5.3
  * Version:           1.0.0
@@ -16,30 +16,31 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Hey there! If you're reading this, you've decided to use this Add-on Skeleton
- * rather than repeat yourself for the millionth time.
+ * Hey there! If you're reading this, you've decided to use this Software
+ * Development Kit rather than repeat yourself for the millionth time.
  *
  * All you need to do is follow the steps below, then code away as usual.
  *
  * 0. Fill out plugin header info above
- * 1. Replace "SC_Addon_Skeleton" with your unique PHP name space
- * 2. Replace "'sc-addon-skeleton'" with your unique text domain
+ * 1. Replace "SC_Addon_SDK" with your unique PHP name space
+ * 2. Replace "'sc-addon-sdk'" with your unique text domain
  * 3. Add to $requirements array if needed
- * 4.
+ * 4. Delete this header
+ * 5. Start coding!
  */
 
 /**
  * This class_exists() check avoids fatal errors when this plugin is activated
  * in more than one way, and should not be removed.
  */
-if ( ! class_exists( 'SC_Addon_Skeleton_Requirements_Check' ) ) :
+if ( ! class_exists( 'SC_Addon_SDK_Requirements_Check' ) ) :
 
 /**
  * The main plugin requirements checker
  *
  * @since 1.0.0
  */
-final class SC_Addon_Skeleton_Requirements_Check {
+final class SC_Addon_SDK_Requirements_Check {
 
 	/**
 	 * Plugin file
@@ -63,7 +64,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $main_class = 'SC_Addon_Skeleton\\Plugin';
+	private $main_class = 'SC_Addon_SDK\\Plugin';
 
 	/**
 	 * Public URI linking users to learn more about plugin requirements
@@ -153,7 +154,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_text() {
-		esc_html_e( 'This plugin is not fully active.', 'sc-addon-skeleton' );
+		esc_html_e( 'This plugin is not fully active.', 'sc-addon-sdk' );
 	}
 
 	/**
@@ -163,7 +164,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_description_text() {
-		return esc_html__( 'Requires %s (%s), but (%s) is installed.', 'sc-addon-skeleton' );
+		return esc_html__( 'Requires %s (%s), but (%s) is installed.', 'sc-addon-sdk' );
 	}
 
 	/**
@@ -173,7 +174,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_missing_text() {
-		return esc_html__( 'Requires %s (%s), but it appears to be missing.', 'sc-addon-skeleton' );
+		return esc_html__( 'Requires %s (%s), but it appears to be missing.', 'sc-addon-sdk' );
 	}
 
 	/**
@@ -183,7 +184,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_link() {
-		return esc_html__( 'Requirements', 'sc-addon-skeleton' );
+		return esc_html__( 'Requirements', 'sc-addon-sdk' );
 	}
 
 	/**
@@ -193,7 +194,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return string
 	 */
 	private function unmet_requirements_label() {
-		return esc_html__( 'Sugar Calendar Requirements', 'sc-addon-skeleton' );
+		return esc_html__( 'Sugar Calendar Requirements', 'sc-addon-sdk' );
 	}
 
 	/**
@@ -203,7 +204,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'sc-addon-skeleton' );
+		load_plugin_textdomain( 'sc-addon-sdk' );
 	}
 
 	/**
@@ -260,7 +261,7 @@ final class SC_Addon_Skeleton_Requirements_Check {
 
 		// Maybe include the bundled bootstrapper
 		if ( ! class_exists( $this->main_class ) ) {
-			require_once dirname( $this->file ) . '/sc-addon-skeleton/sc-addon-skeleton.php';
+			require_once dirname( $this->file ) . '/sc-addon-sdk/sc-addon-sdk.php';
 		}
 
 		// Maybe hook-in the bootstrapper
@@ -610,6 +611,6 @@ final class SC_Addon_Skeleton_Requirements_Check {
 }
 
 // Invoke the checker
-new SC_Addon_Skeleton_Requirements_Check();
+new SC_Addon_SDK_Requirements_Check();
 
 endif;

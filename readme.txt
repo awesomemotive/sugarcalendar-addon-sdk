@@ -19,7 +19,7 @@ This is the long description. No limit, and you can use Markdown.
 
 == Installation ==
 
-1. Upload `sc-addon-skeleton` to the `/wp-content/plugins/` directory
+1. Upload `sc-addon-sdk` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==

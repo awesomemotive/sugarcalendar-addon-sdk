@@ -2,6 +2,9 @@ module.exports = function( grunt ) {
 
 	'use strict';
 
+	// Force Unix newlines
+	grunt.util.linefeed = '\n';
+
 	// Load multiple grunt tasks using globbing patterns
 	require( 'load-grunt-tasks' )( grunt );
 
@@ -57,49 +60,6 @@ module.exports = function( grunt ) {
 						ext: '.css',
 					},
 				],
-			},
-		},
-
-		replace: {
-
-			// /README.md
-			readme_md: {
-				src: [ 'README.md' ],
-				overwrite: true,
-				replacements: [{
-					from: /Current Version:\s*(.*)/,
-					to: "Current Version: <%= pkg.version %>",
-				}],
-			},
-
-			// /readme.txt
-			readme_txt: {
-				src: [ 'readme.txt' ],
-				overwrite: true,
-				replacements: [{
-					from: /Stable tag:\s*(.*)/,
-					to: "Stable tag:        <%= pkg.version %>",
-				}],
-			},
-
-			// /sugar-calendar.php
-			bootstrap_php: {
-				src: [ '<%= pkg.name %>.php' ],
-				overwrite: true,
-				replacements: [{
-					from: /Version:\s*(.*)/,
-					to: "Version:           <%= pkg.version %>",
-				}],
-			},
-
-			// /sugar-calendar/sugar-calendar.php
-			loader_php: {
-				src: [ '<%= pkg.name %>/<%= pkg.name %>.php' ],
-				overwrite: true,
-				replacements: [{
-					from: /private\s*\$version\s*=\s*'(.*)'/,
-					to: "private $version = '<%= pkg.version %>'",
-				}],
 			},
 		},
 
@@ -228,6 +188,49 @@ module.exports = function( grunt ) {
 			},
 		},
 
+		replace: {
+
+			// /README.md
+			readme_md: {
+				src: [ 'README.md' ],
+				overwrite: true,
+				replacements: [{
+					from: /Current Version:\s*(.*)/,
+					to: "Current Version: <%= pkg.version %>",
+				}],
+			},
+
+			// /readme.txt
+			readme_txt: {
+				src: [ 'readme.txt' ],
+				overwrite: true,
+				replacements: [{
+					from: /Stable tag:\s*(.*)/,
+					to: "Stable tag:        <%= pkg.version %>",
+				}],
+			},
+
+			// /sugar-calendar.php
+			bootstrap_php: {
+				src: [ '<%= pkg.name %>.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /Version:\s*(.*)/,
+					to: "Version:           <%= pkg.version %>",
+				}],
+			},
+
+			// /sugar-calendar/sugar-calendar.php
+			loader_php: {
+				src: [ '<%= pkg.name %>/<%= pkg.name %>.php' ],
+				overwrite: true,
+				replacements: [{
+					from: /private\s*\$version\s*=\s*'(.*)'/,
+					to: "private $version = '<%= pkg.version %>'",
+				}],
+			},
+		},
+
 		// Compress build directory into <name>.zip and <name>-<version>.zip
 		compress: {
 			main: {
@@ -245,28 +248,24 @@ module.exports = function( grunt ) {
 
 	// Default
 	grunt.registerTask( 'default', [
-		'i18n',
-		'readme'
+		'update',
 	] );
-
-	// WordPress
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
 
 	// Internationalization
 	grunt.registerTask( 'i18n', [
 		'addtextdomain',
+		'force:checktextdomain',
 		'makepot'
 	] );
 
 	// Read Me
 	grunt.registerTask( 'readme', [
-		'wp_readme_to_markdown'
+		'wp_readme_to_markdown',
 	] );
 
 	// Bump versions
 	grunt.registerTask( 'bump', [
-		'replace'
+		'replace',
 	] );
 
 	// Bump assets
@@ -275,8 +274,7 @@ module.exports = function( grunt ) {
 		'cssmin:ltr',
 		'rtlcss',
 		'cssmin:rtl',
-		'force:checktextdomain',
-		'makepot'
+		'i18n',
 	] );
 
 	// Build the .zip to ship somewhere
@@ -284,8 +282,6 @@ module.exports = function( grunt ) {
 		'update',
 		'clean',
 		'copy',
-		'compress'
+		'compress',
 	] );
-
-	grunt.util.linefeed = '\n';
 };
