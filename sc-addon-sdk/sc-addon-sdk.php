@@ -161,7 +161,7 @@ final class Plugin {
 	 * @return mixed
 	 */
 	public function __get( $key = '' ) {
-		return $this->__isset( $this->{$key} )
+		return $this->__isset( $key )
 			? $this->{$key}
 			: null;
 	}
