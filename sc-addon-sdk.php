@@ -9,7 +9,7 @@
  * Domain Path:       /sc-addon-sdk/includes/languages/
  * Requires PHP:      7.0.0
  * Requires at least: 5.3
- * Version:           1.0.0
+ * Version:           1.0.1
  */
 
 // Exit if accessed directly
@@ -64,7 +64,7 @@ final class SC_Addon_SDK_Requirements_Check {
 	 * @since 1.0.0
 	 * @var string
 	 */
-	private $main_class = 'SC_Addon_SDK\\Plugin';
+	private $main_class = 'Sugar_Calendar\\AddOn\\SDK\\Plugin';
 
 	/**
 	 * Public URI linking users to learn more about plugin requirements

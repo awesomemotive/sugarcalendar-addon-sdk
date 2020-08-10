@@ -1,10 +1,10 @@
-# Copyright (C) 2020
-# This file is distributed under the same license as the  package.
+# Copyright (C) 2020 Sandhills Development, LLC
+# This file is distributed under the same license as the Sugar Calendar - Add-On SDK package.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Sugar Calendar - Add-On SDK 1.0.1\n"
 "Report-Msgid-Bugs-To: https://sandhillsdev.com/\n"
-"POT-Creation-Date: 2020-08-06 22:19:19+00:00\n"
+"POT-Creation-Date: 2020-08-10 03:03:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,22 +24,34 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: sc-addon-skeleton.php:157
+#: sc-addon-sdk/includes/admin/meta-box.php:50
+msgid "A thing"
+msgstr ""
+
+#: sc-addon-sdk/includes/admin/meta-box.php:62
+msgid "Another thing"
+msgstr ""
+
+#: sc-addon-sdk.php:157
 msgid "This plugin is not fully active."
 msgstr ""
 
-#: sc-addon-skeleton.php:167
+#: sc-addon-sdk.php:167
 msgid "Requires %s (%s), but (%s) is installed."
 msgstr ""
 
-#: sc-addon-skeleton.php:177
+#: sc-addon-sdk.php:177
 msgid "Requires %s (%s), but it appears to be missing."
 msgstr ""
 
-#: sc-addon-skeleton.php:187
+#: sc-addon-sdk.php:187
 msgid "Requirements"
 msgstr ""
 
-#: sc-addon-skeleton.php:197
+#: sc-addon-sdk.php:197
 msgid "Sugar Calendar Requirements"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A Software Development Kit for Sugar Calendar Add-ons"
 msgstr ""

@@ -4,7 +4,7 @@
  *
  * @package Plugins/Site/Events/Admin/Hooks
  */
-namespace SC_Addon_SDK\Admin;
+namespace Sugar_Calendar\AddOn\SDK\Admin;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;

@@ -4,12 +4,12 @@
  *
  * @package Plugins/Site/Events/Admin/Assets
  */
-namespace SC_Addon_SDK\Admin\Assets;
+namespace Sugar_Calendar\AddOn\SDK\Admin\Assets;
 
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-use SC_Addon_SDK\Plugin;
+use Sugar_Calendar\AddOn\SDK\Plugin;
 
 /**
  * Register assets.
@@ -23,7 +23,7 @@ function register() {
 	$pre  = Plugin::instance()->prefix;
 
 	// URL & Dependencies
-	$url  = constant( strtoupper( $pre ) . '_PLUGIN_URL' ) . 'includes/admin/assets/';
+	$url  = constant( strtoupper( $pre ) . '_PLUGIN_URL' ) . 'sc-addon-sdk/includes/admin/assets/';
 	$deps = array();
 
 	// Suffixes
@@ -52,7 +52,7 @@ function register() {
 	/** Scripts ***************************************************************/
 
 	// Admin
-	wp_register_script( $pre . '_admin_general', "{$url}js/sc-admin.js", $deps, $ver, false );
+	wp_register_script( $pre . '_admin_general', "{$url}js/general.js", $deps, $ver, false );
 
 	/** Styles ****************************************************************/
 

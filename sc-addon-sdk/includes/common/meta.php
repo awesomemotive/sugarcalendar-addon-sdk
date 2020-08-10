@@ -4,7 +4,10 @@
  *
  * @package Plugins/Site/Events/Meta
  */
-namespace SC_Addon_SDK\Meta;
+namespace Sugar_Calendar\AddOn\SDK\Meta;
+
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Register the meta keys and values.
