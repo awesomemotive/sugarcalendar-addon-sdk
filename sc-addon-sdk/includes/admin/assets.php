@@ -35,6 +35,10 @@ function register() {
 	// Minify?
 	if ( empty( $debug ) ) {
 		$css_path = trailingslashit( 'min' );
+
+	// No cache?
+	} else {
+		$ver = time();
 	}
 
 	// Right-to-Left?
