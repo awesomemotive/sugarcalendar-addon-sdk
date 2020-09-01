@@ -9,7 +9,8 @@ namespace Sugar_Calendar\AddOn\SDK\Admin\Assets;
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
-use Sugar_Calendar\AddOn\SDK\Plugin;
+use Sugar_Calendar\AddOn\SDK\Plugin as Plugin;
+use Sugar_Calendar\AddOn\SDK\Common\Assets as Assets;
 
 /**
  * Register assets.
@@ -18,40 +19,12 @@ use Sugar_Calendar\AddOn\SDK\Plugin;
  */
 function register() {
 
-	// Get version &  prefix
-	$ver  = Plugin::instance()->version;
+	// Get necessary asset vars
 	$pre  = Plugin::instance()->prefix;
-
-	// URL & Dependencies
-	$url  = constant( strtoupper( $pre ) . '_PLUGIN_URL' ) . 'sc-addon-sdk/includes/admin/assets/';
+	$url  = Assets\get_url() . 'sc-addon-sdk/includes/admin/assets/';
+	$ver  = Assets\get_version();
+	$path = Assets\get_css_path();
 	$deps = array();
-
-	// Suffixes
-	$debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
-
-	// Default CSS path
-	$css_path = '';
-
-	// Minify?
-	if ( empty( $debug ) ) {
-		$css_path = trailingslashit( 'min' );
-
-	// No cache?
-	} else {
-		$ver = time();
-	}
-
-	// Right-to-Left?
-	if ( is_rtl() ) {
-		$css_path .= 'rtl';
-	} else {
-		$css_path .= 'ltr';
-	}
-
-	// Maybe add a trailing slash
-	if ( ! empty( $css_path ) ) {
-		$css_path = trailingslashit( $css_path );
-	}
 
 	/** Scripts ***************************************************************/
 
@@ -61,7 +34,7 @@ function register() {
 	/** Styles ****************************************************************/
 
 	// General
-	wp_register_style( $pre . '_admin_general', "{$url}css/{$css_path}general.css", $deps, $ver, 'all' );
+	wp_register_style( $pre . '_admin_general', "{$url}css/{$path}general.css", $deps, $ver, 'all' );
 }
 
 /**
