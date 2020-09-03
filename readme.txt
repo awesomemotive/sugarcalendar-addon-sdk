@@ -3,7 +3,7 @@ Donate link:       https://
 Author URI:        https://
 Plugin URI:        https://
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
-License:           GPLv2 or later
+License:           GNU General Public License v2 or later
 Contributors:      (comma separated list of wordpress.org user names)
 Tags:              (comma separated list of relevant keywords)
 Requires PHP:      7.0

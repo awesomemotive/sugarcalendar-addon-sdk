@@ -5,6 +5,8 @@
  * Description:       A Software Development Kit for Sugar Calendar Add-ons
  * Author:            Sandhills Development, LLC
  * Author URI:        https://sandhillsdev.com
+ * License:           GNU General Public License v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       sc-addon-sdk
  * Domain Path:       /sc-addon-sdk/includes/languages/
  * Requires PHP:      7.0.0
