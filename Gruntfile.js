@@ -132,18 +132,24 @@ module.exports = function( grunt ) {
 		makepot: {
 			target: {
 				options: {
-					domainPath: '/<%= pkg.name %>/includes/languages/', // Where to save the POT file.
-					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*', 'build/*' ],
-					mainFile: '<%= pkg.name %>.php', // Main project file.
-					potFilename: '<%= pkg.name %>.pot', // Name of the POT file.
+					domainPath: '/<%= pkg.name %>/includes/languages/',
+					exclude: [
+						'\.git/*',
+						'bin/*',
+						'node_modules/*',
+						'tests/*',
+						'build/*',
+					],
+					mainFile: '<%= pkg.name %>.php',
+					potFilename: '<%= pkg.name %>.pot',
 					potHeaders: {
-						poedit: true, // Includes common Poedit headers.
-						'x-poedit-keywordslist': true, // Include a list of all possible gettext functions.
+						poedit: true,
+						'x-poedit-keywordslist': true,
 					},
-					type: 'wp-plugin', // Type of project (wp-plugin or wp-theme).
-					updateTimestamp: true, // Whether the POT-Creation-Date should be updated without other changes.
+					type: 'wp-plugin',
+					updateTimestamp: false,
 					processPot: function( pot, options ) {
-						pot.headers[ 'report-msgid-bugs-to' ] = 'https://sandhillsdev.com/';
+						pot.headers[ 'report-msgid-bugs-to' ] = 'https://sugarcalendar.com';
 						pot.headers[ 'last-translator' ] = 'WP-Translations (http://wp-translations.org/)';
 						pot.headers[ 'language-team' ] = 'WP-Translations <wpt@wp-translations.org>';
 						pot.headers.language = 'en_US';
@@ -159,7 +165,6 @@ module.exports = function( grunt ) {
 						for ( translation in pot.translations[ '' ] ) {
 							if ( 'undefined' !== typeof pot.translations[ '' ][ translation ].comments.extracted ) {
 								if ( excluded_meta.indexOf( pot.translations[ '' ][ translation ].comments.extracted ) >= 0 ) {
-									console.log( 'Excluded meta: ' + pot.translations[ '' ][ translation ].comments.extracted );
 									delete pot.translations[ '' ][ translation ];
 								}
 							}

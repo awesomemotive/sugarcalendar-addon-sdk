@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Sugar Calendar - Add-On SDK
- * Plugin URI:        https://
+ * Plugin URI:        https://sugarcalendar.com/downloads/addon-sdk
  * Description:       A Software Development Kit for Sugar Calendar Add-ons
  * Author:            Sandhills Development, LLC
  * Author URI:        https://sandhillsdev.com
@@ -11,7 +11,7 @@
  * Domain Path:       /sc-addon-sdk/includes/languages/
  * Requires PHP:      7.0.0
  * Requires at least: 5.3
- * Version:           1.0.1
+ * Version:           0.1.0
  */
 
 // Exit if accessed directly
@@ -24,11 +24,14 @@ defined( 'ABSPATH' ) || exit;
  * All you need to do is follow the steps below, then code away as usual.
  *
  * 0. Fill out plugin header info above
- * 1. Replace "SC_Addon_SDK" with your unique PHP name space
- * 2. Replace "'sc-addon-sdk'" with your unique text domain
- * 3. Add to $requirements array if needed
- * 4. Delete this header
- * 5. Start coding!
+ * 1. Replace "SC_Addon_SDK" with your unique PHP prefix and namespace
+ * 2. Replace "'sc-addon-sdk'" with your unique plugin directory & text domain
+ * 3. Replace strings and URLs in this file for your application
+ * 4. Check the $requirements array and versions for your application
+ * 5. Check the "Requires" headers above to make sure they match
+ * 6. Check the assets in the "front-end" and "admin" directories
+ * 7. Delete this documentation block
+ * 8. Start coding!
  */
 
 /**

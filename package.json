@@ -1,6 +1,6 @@
 {
 	"name": "sc-addon-sdk",
-	"version": "1.0.1",
+	"version": "0.1.0",
 	"main": "webpack.config.js",
 	"author": "Sandhills Development",
 	"private": true,
