@@ -10,7 +10,7 @@
  * Text Domain:       sc-addon-sdk
  * Domain Path:       /sc-addon-sdk/includes/languages/
  * Requires PHP:      7.0.0
- * Requires at least: 5.3
+ * Requires at least: 5.7
  * Version:           0.1.0
  */
 
@@ -101,7 +101,7 @@ final class SC_Addon_SDK_Requirements_Check {
 
 		// WordPress
 		'wp' => array(
-			'minimum' => '5.3.0',
+			'minimum' => '5.7.0',
 			'name'    => 'WordPress',
 			'exists'  => true,
 			'current' => false,
@@ -111,7 +111,7 @@ final class SC_Addon_SDK_Requirements_Check {
 
 		// Sugar Calendar
 		'sc' => array(
-			'minimum' => '2.0.17',
+			'minimum' => '2.1.10',
 			'name'    => 'Sugar Calendar',
 			'exists'  => false,
 			'current' => false,
