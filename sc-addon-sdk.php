@@ -362,6 +362,11 @@ final class SC_Addon_SDK_Requirements_Check {
 			return false;
 		}
 
+		// Bail if in blog admin
+		if ( is_multisite() && is_blog_admin() ) {
+			return false;
+		}
+
 		// Allowed auto-update statuses
 		$allowed_statuses = array(
 			'all',
