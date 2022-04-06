@@ -1,14 +1,14 @@
-# Copyright (C) 2021 Sandhills Development, LLC
+# Copyright (C) 2022 Sandhills Development, LLC
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sugar Calendar - Add-On SDK 0.1.0\n"
+"Project-Id-Version: Sugar Calendar - Addon SDK 0.1.0\n"
 "Report-Msgid-Bugs-To: https://sugarcalendar.com\n"
-"POT-Creation-Date: 2021-04-22 17:47:30+00:00\n"
+"POT-Creation-Date: 2022-04-06 02:20:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: WP-Translations (http://wp-translations.org/)\n"
 "Language-Team: WP-Translations <wpt@wp-translations.org>\n"
 "Language: en_US\n"
@@ -53,5 +53,5 @@ msgid "Sugar Calendar Requirements"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "A Software Development Kit for Sugar Calendar Add-ons"
+msgid "A Software Development Kit for Sugar Calendar Addons"
 msgstr ""

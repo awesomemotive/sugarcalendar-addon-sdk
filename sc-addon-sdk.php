@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Sugar Calendar - Add-On SDK
+ * Plugin Name:       Sugar Calendar - Addon SDK
  * Plugin URI:        https://sugarcalendar.com/downloads/addon-sdk
- * Description:       A Software Development Kit for Sugar Calendar Add-ons
+ * Description:       A Software Development Kit for Sugar Calendar Addons
  * Author:            Sandhills Development, LLC
  * Author URI:        https://sandhillsdev.com
  * License:           GNU General Public License v2 or later
